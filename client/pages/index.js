@@ -1,8 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import axios from 'axios'
+import { useState } from 'react'
 
 export default function Home() {
+  const [value, setValue] = useState('')
+  axios({
+    method: 'get',
+    url: 'http://localhost:3001',
+  }).then( res => {
+    setValue(res.data)
+    console.log(res.data)
+  });
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +28,7 @@ export default function Home() {
 
         <p className={styles.description}>
           Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          {value}
         </p>
 
         <div className={styles.grid}>
