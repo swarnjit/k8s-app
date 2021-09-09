@@ -12,7 +12,7 @@ export default function Home() {
   }).then( res => {
     setValue(res.data)
     console.log(res.data)
-  });
+  }).catch((e) => console.log(e));
   return (
     <div className={styles.container}>
       <Head>
